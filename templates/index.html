@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link rel="stylesheet" href="{% static '/index.css' %}">
+    <link rel="shortcut icon" href="{% static '/images/favicon.ico' %}" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <h1 class="logo"><a href="/">Logo</h1>
+        {% if user.is_authenticated %}
+        
+        <div class="profile-box">
+            <a href="/profile/">
+                <img class = 'profile-image' src="{% static 'images/profile-icon.svg' %}" alt="">
+            </a>
+            <h3 class="User-name"><a href="/profile/">{{user.first_name}}</a></h3>
+        </div>
+
+        {% else %}
+        <h3 class="signUp-login"><a href="/login_page/"> Login/Sign Up</a></h3>
+        {% endif %}
+    </header>
+    <main>
+        {% if user.is_authenticated %}
+        <h1>Hello {{user.first_name}}</h1>
+
+        {% else %}
+        <pre class="main-text">
+            <a href="/login_page/">
+            Login
+        </a>
+            to join us.
+            or
+            <a href="/signup_page/">
+            Sign Up
+        </a>
+        </pre>
+
+        {% endif %}
+        <!-- Content changes here -->
+
+        <!-- Content changes end here -->
+    </main>
+    {% for message in messages %}
+
+    <script>
+        window.onload = function () {
+            alert('{{message}}')
+        }
+    </script>
+    {% endfor %}
+</body>
+
+</html>

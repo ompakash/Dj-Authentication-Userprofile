@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&family=Sacramento&display=swap"
+        rel="stylesheet">
+    <link rel="shortcut icon" href="{% static '/images/favicon.ico' %}" type="image/x-icon">
+    <title>View</title>
+    <link rel="stylesheet" href="{% static 'profile.css' %}">
+</head>
+
+<body>
+    <header>
+        <a href="/" class="logo">Logo</a>
+        <h3><a class="logout" href="/logout/">Logout</a></h3>
+    </header>
+
+    <main>
+        <div class="graphics">
+            <img class='graphic-img' src="{% static 'images/profile-graphic.svg' %}" alt="">
+        </div>
+
+        <div class="profile-info">
+
+            <div class="user-profile-image-box ">
+                <form class="user-profile-image-box" action="#">
+                    <label for="img"><img class='profile-image' src="{{request.user.Profile.image.url}}"
+                            alt=""></label>
+                    <input style="  visibility:hidden; width:0; height:0" type="image" id="img" name="img"
+                        accept="image/*">
+                    <!-- <input type="submit"> -->
+                </form>
+            </div>
+
+            <div class="user-info">
+
+                <div class="label-data">
+                    <div class="label">Name</div>
+
+                    <div class="data">{{user.first_name}}</div>
+                </div>
+
+                <div class="label-data">
+                    <div class="label">Username</div>
+
+                    <div class="data">{{user.username}}</div>
+                </div>
+
+                <div class="label-data">
+                    <div class="label">Gmail</div>
+
+                    <div class="data">{{user.email}}</div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
